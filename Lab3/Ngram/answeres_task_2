@@ -2,7 +2,7 @@ x,0.1,0.5,1
 perplexitet,1582.29731798884,2448.38472807595,3094.90704436956
 logprob,-106639.395332719,-112958.904485645,-116351.056765968
 
-yada yada logprob minskar, yada yada perplexitet ökar
+när logprob minskar, ökar perplexiteten
 
 Perplexitet är "förvirringsnivån" hos programmet. Med det så menar jag hur pass 
 säker programmet är på det svar den ger användaren i sin analys utav texten. Låg
@@ -15,6 +15,7 @@ probabilitet = b^logprob
 bäst värden lyckades jag hitta vid x=0.0144
 Logprob: -103869.95477478
 Perplexity: 1306.77890860154
+
 
 >ngram.pl 0.0144 hp-train hp-test
 Logprob: -32521.9343594792
@@ -32,7 +33,9 @@ Perplexity: 7692.65076293758
 Resultatet är bättre än jag väntat mig men fortfarande mycket sämre än de två
 andra körningarna. Anledningen är att den försöker lära sig att skapa en språk-
 modell med fel träning. Det är lite som att försöka lära sig spela fotboll genom
-att spela basket.
+att spela basket. Den har inte övat på att förstå den här typen av text och kan 
+därför bara förstå enklare meningsbyggnader med ord som är mer vanliga.
+
 
 >generate.pl n1 5 eu-train
 Genererar 5 meningar från en unigrammodell...
@@ -46,6 +49,7 @@ hoppas det har domar . . dolda skottland gruppens verkar kommissionär meddeland
 deputerade försöker , åtgärder har åtagandet det debatten # att usa grekiska 
 bilden ömsesidiga möjliga av var vid
 
+
 >generate.pl n2 5 eu-train
 Genererar 5 meningar från en bigrammodell...
 
@@ -55,7 +59,7 @@ dem inför en viss grad . Reads betänkande ( h-0162/99 ) ] .
 Fru kommissionär kinnock .
 I portugal och europeiska medborgare är en mobilisering av ett förslag .
 
-askldaskldjasklddjas djkldaskldjkldjas 
+
 >generate.pl n3 5 eu-train
 Genererar 5 meningar från en trigrammodell...
 
