@@ -1,0 +1,23 @@
+Vad är unigram-sannolikheten för ordet 'Sara' utifrån texten dvs. P(Sara)?
+	1/8 (2 "Sara"/16 element) 
+
+Vad är sannolikheten för att Sara är det första ordet i en mening enligt MLE-modellen?
+	2/3 "<s>" förekommer 3 gng, "Sara" förekommer som nästa ord i två av dessa fall.
+
+Vad är p(Sara läser .) (a) utan smoothing av modellen? (b) med add-1 smoothing?
+
+1/1*1/2 = 1/2, P(.|läser)*P(läser|Sara) = 2/8*2/9 = 4/72
+
+Vad är p(Kalle läser .) (a) utan smoothing av modellen? (b) med add-1 smoothing?
+
+P(.|läser)*P(läser|Kalle) 1/1*0 = 0, P(.|läser)*P(läser|Kalle) = 2/8*1/8 = 2/64
+
+Givet en ändlig vokabulär som ovan, vad är summan av sannolikheterna för alla bigram som börjar med <s>,
+dvs ∑w p(w|<s>)? 
+
+1
+
+G = symboler
+f(x) = position
+
+perplexitet = sum{g€G}(f(g))/|G|

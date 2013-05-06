@@ -1,0 +1,85 @@
+x,0.1,0.5,1
+perplexitet,1582.29731798884,2448.38472807595,3094.90704436956
+logprob,-106639.395332719,-112958.904485645,-116351.056765968
+
+yada yada logprob minskar, yada yada perplexitet ökar
+
+Perplexitet är "förvirringsnivån" hos programmet. Med det så menar jag hur pass 
+säker programmet är på det svar den ger användaren i sin analys utav texten. Låg
+perplexitet är därmed bra medan hög perplexitet är dåligt.
+
+logprob är probabiliteten skrivet på ett hanterbart sätt. Om vi kallar basen vi
+använder för log-beräkningen för b så är:
+probabilitet = b^logprob
+
+bäst värden lyckades jag hitta vid x=0.0144
+Logprob: -103869.95477478
+Perplexity: 1306.77890860154
+
+>ngram.pl 0.0144 hp-train hp-test
+Logprob: -32521.9343594792
+Perplexity: 97.7817323156687
+
+Det här är riktigt bra resultat i relation till den andra texten. Perplexiteten
+är en tiondel så stor och probabiliteten är högre (iom att logprob är ett mindre
+negativt tal).
+
+
+>ngram.pl 0.0144 eu-train hp-test
+Logprob: -63500.6750164691
+Perplexity: 7692.65076293758
+
+Resultatet är bättre än jag väntat mig men fortfarande mycket sämre än de två
+andra körningarna. Anledningen är att den försöker lära sig att skapa en språk-
+modell med fel träning. Det är lite som att försöka lära sig spela fotboll genom
+att spela basket.
+
+>generate.pl n1 5 eu-train
+Genererar 5 meningar från en unigrammodell...
+
+Därvid jag är
+Om om behandlas i ! politik . över vill . med vrida när att är som anses orsaken
+kommer den är men detta den var hektar en , lite att där informationstekniken få
+gjort föreslagit . alldeles påminna att arbetstagaren att han skapande 
+labourledamöterna och att jag överfulla musik förbjuda den . fru förslaget 
+hoppas det har domar . . dolda skottland gruppens verkar kommissionär meddelande
+deputerade försöker , åtgärder har åtagandet det debatten # att usa grekiska 
+bilden ömsesidiga möjliga av var vid
+
+>generate.pl n2 5 eu-train
+Genererar 5 meningar från en bigrammodell...
+
+Tre månader har tydligt förenklas .
+Grisproduktionen är förvånad över parlamentets erkännsamma ord utgår man även 
+dem inför en viss grad . Reads betänkande ( h-0162/99 ) ] .
+Fru kommissionär kinnock .
+I portugal och europeiska medborgare är en mobilisering av ett förslag .
+
+askldaskldjasklddjas djkldaskldjkldjas 
+>generate.pl n3 5 eu-train
+Genererar 5 meningar från en trigrammodell...
+
+Här hyser jag inga tvivel om att ett ändringsförslag in voce eller ett tekniskt 
+ändringsförslag som har lagts ned , kommer ni att man vägrat använda benämningen
+ " hälsoobservatorium " på grund av brist på eget bevåg ta makten från 
+medlemsstaterna måste omfatta denna lagstiftning skiljer sig dock ganska mycket 
+åt det bestämda och kategoriska svaret att förhandlingarna var balanserade och 
+att vi samtycker till att vi i detta betänkande föreslår en skärpning av de 
+skador som under dessa förhållanden kan jag av innersta övertygelse röstat emot 
+det .
+Förra året rörande en koncentration på större projekt , och i ministerrådet går 
+som väntat åsikterna starkt isär i denna församling . Det var ett beklagligt 
+faktum att parlamentet kan inte heller .
+Planteringsrättens varaktighet har förlängts för att demokratin skall fungera 
+inom osse:s ramverk och samordna godkännandet av de två stora wipo-avtalen från 
+1996 .
+Dessutom behöver är den främsta och viktigaste förutsättningen för att uttrycka 
+sig på gården hemma hos mig , efter en perfekt samstämmighet mellan kartan över 
+strukturfonderna .
+
+Trigram varianten är helt klart bäst. Detta är inte konstigt alls då den plockar
+meningar ur träningen där längre ordsekvenser beaktas vid valet utav ord. Längre
+ordsekvenser betyder mer kontext och mindre entropi. Dock blir trigramtexterna 
+förmodligen mindre diversitiva än bigram texter och unigram texter. Dock verkar
+trigram ge en lagom nivå av både läsbara meningar och samtidigt ändå ha slump-
+mässigheten vi ändå vill uppnå i texten.

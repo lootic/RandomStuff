@@ -1,0 +1,37 @@
+1. Antag språk S = {"<s>", "Mary", "slog", "inte", "häxan", "</s>"}
+
+I en bigram-modell så kan både P(inte|slog) och P(slog|inte) vara lika stora ty
+det går att skapa meningar där inte kan komma före slog. e.g. "inte slog Mary 
+häxan"(eftersom interpunktion inte används annars kan vi kanske få skippa '?' 
+här). Detta gör att den mest dumma översättningen förmodligen är mest sannolikt
+att vår språkmodell antar är korrekt. Utifrån detta resonemang ges att 
+meningarna rangordnas som följer:
+
+Mary inte slog häxan
+Mary slog inte häxan
+Mary
+
+
+2. Antag språk S = {"<s>", "den", "gröna", "häxan", "<s>"}
+
+Det går inte på något sätt att se detta med en unigram-modell då alla ord är
+korrekta. Med en bigram-modell kommer P(gröna|häxan) att skrika till. Därav 
+borde bigram räcka.
+
+3. Det språkliga felet dyker upp först i ett kontext om tre ord. Därav kan vi 
+enkelt konstatera att ett trigram krävs för att upptäcka vilken mening som är
+korrekt.
+
+4.
+Jag passar i den här jackan. 
+I fit into this jacket.
+
+Jag passar bollen till henne.
+I pass the ball to her.
+
+Jag passar på att åka skidor.
+I take the opportunity to ski.
+
+Därför att passar på svenska egentligen har fler betydelser som är orelaterade.
+Engelskan saknar ett sådant ord som har exakt samma olika betydelser och därför
+måste andra ord användas för att beskriva samma sak.
