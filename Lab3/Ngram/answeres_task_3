@@ -1,16 +1,20 @@
 1. Antag språk S = {"<s>", "Mary", "slog", "inte", "häxan", "</s>"}
 
-I en bigram-modell så kan både P(inte|slog) och P(slog|inte) vara lika stora ty
-det går att skapa meningar där inte kan komma före slog. e.g. "inte slog Mary 
-häxan"(eftersom interpunktion inte används annars kan vi kanske få skippa '?' 
-här). Detta gör att den mest dumma översättningen förmodligen är mest sannolikt
-att vår språkmodell antar är korrekt. Utifrån detta resonemang ges att 
-meningarna rangordnas som följer:
+Den svenska språkmodellen kommer inte ta hänsyn till hur den ursprungliga 
+meningen såg ut. I det svenska språket så brukar negation komma efter ett verb 
+och därför är P(inte|slog) > P(slog|inte). I övrigt så kan jag inte se några
+tydliga skillnader emellan språkmodellerna eftersom P(häxan|slog) och 
+P(häxan|inte) är mest beroende på hur många meningar med negationer som funnits
+i träningskorpusen. Ett rakt sonika "Mary" borde få högst sannolikhet som en 
+korrekt mening i en svensk språkmodell baserad på bigram då den innehåller färst
+antal faktorer. Skulle man ta hänsyn till ursprungliga texten dock skulle man 
+kunna vikta ner meningar med allt för få ord i förhållande till sitt ursprung.
+Nu gör inte den hypotetiska språkmodellen detta och därför ser rangordningen ut
+som följer, bäst sannolikhet först.
 
-Mary inte slog häxan
-Mary slog inte häxan
 Mary
-
+Mary slog inte häxan
+Mary inte slog häxan
 
 2. Antag språk S = {"<s>", "den", "gröna", "häxan", "<s>"}
 

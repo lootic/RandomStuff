@@ -6,11 +6,16 @@ Vad är sannolikheten för att Sara är det första ordet i en mening enligt MLE
 
 Vad är p(Sara läser .) (a) utan smoothing av modellen? (b) med add-1 smoothing?
 
-1/1*1/2 = 1/2, P(.|läser)*P(läser|Sara) = 2/8*2/9 = 4/72
+P(Sara|<s>)*P(.|läser)*P(läser|Sara)*P(</s>|.)
+2/3*1/1*1/2*3/3 = 1/3
+3/10*2/8*2/9*4/10 = 1/150
 
 Vad är p(Kalle läser .) (a) utan smoothing av modellen? (b) med add-1 smoothing?
 
-P(.|läser)*P(läser|Kalle) 1/1*0 = 0, P(.|läser)*P(läser|Kalle) = 2/8*1/8 = 2/64
+P(Kalle|<s>)*P(.|läser)*P(läser|Kalle)*P(</s>|.) 1/3*1/1*0*3/3 = 0 
+
+P(Kalle|<s>)*P(.|läser)*P(läser|Kalle)*P(</s>|.) =  2/10 * 2/8 * 1/8 * 4/10 = 
+1/400
 
 Givet en ändlig vokabulär som ovan, vad är summan av sannolikheterna för alla bigram som börjar med <s>,
 dvs ∑w p(w|<s>)? 
